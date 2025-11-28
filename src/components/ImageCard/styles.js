@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
   description: {
     fontSize: 12,
     color: colors.text,
-    fontWeight: '500',
+    fontWeight: 'bold',
     marginBottom: 4,
   },
   photographer: {

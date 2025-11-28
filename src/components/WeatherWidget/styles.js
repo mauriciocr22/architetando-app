@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   cityName: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.text,
     marginBottom: 2,
   },

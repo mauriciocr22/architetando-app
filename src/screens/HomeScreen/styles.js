@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.primary,
     marginBottom: 10,
   },
@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.primary,
     textAlign: 'center',
   },

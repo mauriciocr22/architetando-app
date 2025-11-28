@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.primary,
     marginBottom: 10,
   },
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   boldText: {
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.primary,
   },
   mapContainer: {
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
   },
   mapTitle: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: colors.primary,
     marginBottom: 10,
     textAlign: 'center',
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
   mapButtonText: {
     color: colors.white,
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   mapHint: {
     fontSize: 12,

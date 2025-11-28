@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Linking, TouchableOpacity, Image } from 'react-native';
+import { View, Text, ScrollView, Linking, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header';
 import { styles } from './styles';
 
@@ -16,12 +16,6 @@ const AboutScreen = () => {
   };
 
   const address = 'Praça Visc. de Mauá, 29 - sala 422 - Centro, Santos - SP, 11010-000';
-
-  // URL do mapa estático do Google Maps (não requer API key para uso básico)
-  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=16&size=600x400&markers=color:blue%7C${location.latitude},${location.longitude}&key=YOUR_API_KEY`;
-
-  // Fallback: imagem do mapa sem API key
-  const staticMapUrlNoKey = `https://www.google.com/maps/embed/v1/view?key=&center=${location.latitude},${location.longitude}&zoom=16`;
 
   // Abre endereço no Google Maps
   const openInMaps = () => {
@@ -66,13 +60,12 @@ const AboutScreen = () => {
             </Text>
           </View>
 
-          {/* Mapa - Google Maps (Estático) */}
+          {/* Mapa - Google Maps (Deep Link) */}
           <TouchableOpacity
             style={styles.mapContainer}
             onPress={openInMaps}
             activeOpacity={0.8}
           >
-            {/* Placeholder de mapa com botão */}
             <View style={styles.mapPlaceholder}>
               <Text style={styles.mapIcon}>📍</Text>
               <Text style={styles.mapTitle}>Centro Histórico de Santos</Text>
