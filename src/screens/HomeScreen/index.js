@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
 import WeatherWidget from '../../components/WeatherWidget';
@@ -19,10 +19,7 @@ const HomeScreen = () => {
       <ScrollView style={styles.scrollContent}>
         {/* Logo da empresa */}
         <View style={styles.logoContainer}>
-          <Image
-            source={require('../../../assets/images/logo-azul.svg')}
-            style={styles.logo}
-          />
+          <Text style={styles.logoText}>ARCHITETANDO</Text>
         </View>
 
         <Text style={styles.title}>Architetando Cursos de Arquitetura</Text>
@@ -77,7 +74,7 @@ const HomeScreen = () => {
 
             <TouchableOpacity
               style={styles.card}
-              onPress={() => {}}
+              onPress={() => navigation.navigate('About')}
             >
               <Text style={styles.cardIcon}>📞</Text>
               <Text style={styles.cardTitle}>Contato</Text>

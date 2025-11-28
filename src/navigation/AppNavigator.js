@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../constants/colors';
@@ -84,7 +85,7 @@ const AppNavigator = () => {
 
 // Componente auxiliar para ícones de emoji
 const TabIcon = ({ icon, color }) => {
-  return <span style={{ fontSize: 24 }}>{icon}</span>;
+  return <Text style={{ fontSize: 24 }}>{icon}</Text>;
 };
 
 export default AppNavigator;

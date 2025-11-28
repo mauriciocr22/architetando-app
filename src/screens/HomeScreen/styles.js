@@ -13,10 +13,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 20,
   },
-  logo: {
-    width: 200,
-    height: 80,
-    resizeMode: 'contain',
+  logoText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: colors.primary,
+    letterSpacing: 2,
   },
   title: {
     fontSize: 24,
