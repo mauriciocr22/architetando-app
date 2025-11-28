@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
   },
   mapContainer: {
-    height: 250,
+    height: 280,
     borderRadius: 12,
     overflow: 'hidden',
     borderWidth: 1,
@@ -43,20 +43,48 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: colors.lightBackground,
   },
-  map: {
-    flex: 1,
-  },
   mapPlaceholder: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: colors.white,
   },
-  mapPlaceholderText: {
+  mapIcon: {
+    fontSize: 48,
+    marginBottom: 15,
+  },
+  mapTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.primary,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  mapSubtitle: {
     fontSize: 14,
+    color: colors.text,
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 20,
+  },
+  mapButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginBottom: 12,
+  },
+  mapButtonText: {
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  mapHint: {
+    fontSize: 12,
     color: colors.textLight,
     textAlign: 'center',
-    marginTop: 10,
+    fontStyle: 'italic',
   },
   contactItem: {
     flexDirection: 'row',

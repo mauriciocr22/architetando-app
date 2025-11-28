@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Platform, Linking, TouchableOpacity } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { View, Text, ScrollView, Linking, TouchableOpacity, Image } from 'react-native';
 import Header from '../../components/Header';
 import { styles } from './styles';
 
@@ -14,19 +13,19 @@ const AboutScreen = () => {
   const location = {
     latitude: -23.9395,
     longitude: -46.3322,
-    latitudeDelta: 0.005,
-    longitudeDelta: 0.005,
   };
 
   const address = 'Praça Visc. de Mauá, 29 - sala 422 - Centro, Santos - SP, 11010-000';
 
+  // URL do mapa estático do Google Maps (não requer API key para uso básico)
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=16&size=600x400&markers=color:blue%7C${location.latitude},${location.longitude}&key=YOUR_API_KEY`;
+
+  // Fallback: imagem do mapa sem API key
+  const staticMapUrlNoKey = `https://www.google.com/maps/embed/v1/view?key=&center=${location.latitude},${location.longitude}&zoom=16`;
+
   // Abre endereço no Google Maps
   const openInMaps = () => {
-    const url = Platform.select({
-      ios: `maps:0,0?q=${location.latitude},${location.longitude}(Architetando)`,
-      android: `geo:0,0?q=${location.latitude},${location.longitude}(Architetando)`,
-      default: `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`,
-    });
+    const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
     Linking.openURL(url);
   };
 
@@ -67,35 +66,29 @@ const AboutScreen = () => {
             </Text>
           </View>
 
-          {/* Mapa - Google Maps API */}
-          <View style={styles.mapContainer}>
-            {Platform.OS === 'web' ? (
-              // Fallback para web usando iframe do Google Maps
-              <iframe
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                style={{ border: 0 }}
-                src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${location.latitude},${location.longitude}&zoom=16`}
-                allowFullScreen
-              />
-            ) : (
-              // MapView nativo para iOS/Android
-              <MapView
-                style={styles.map}
-                initialRegion={location}
-              >
-                <Marker
-                  coordinate={{
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                  }}
-                  title="Architetando"
-                  description={address}
-                />
-              </MapView>
-            )}
-          </View>
+          {/* Mapa - Google Maps (Estático) */}
+          <TouchableOpacity
+            style={styles.mapContainer}
+            onPress={openInMaps}
+            activeOpacity={0.8}
+          >
+            {/* Placeholder de mapa com botão */}
+            <View style={styles.mapPlaceholder}>
+              <Text style={styles.mapIcon}>📍</Text>
+              <Text style={styles.mapTitle}>Centro Histórico de Santos</Text>
+              <Text style={styles.mapSubtitle}>
+                Praça Visc. de Mauá, 29{'\n'}
+                Sala 422 - Centro{'\n'}
+                Santos - SP, 11010-000
+              </Text>
+              <View style={styles.mapButton}>
+                <Text style={styles.mapButtonText}>🗺️ Abrir no Google Maps</Text>
+              </View>
+              <Text style={styles.mapHint}>
+                Toque para ver a localização completa
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
         {/* Contato */}
