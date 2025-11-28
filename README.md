@@ -19,7 +19,7 @@ Este é um aplicativo acadêmico que apresenta a empresa Architetando, seus curs
 - **React Navigation** (Bottom Tabs)
 - **AsyncStorage** para favoritos
 - **Axios** para requisições HTTP
-- **React Native Maps** para mapas
+- **Linking API** para integração com Google Maps
 
 ### APIs Integradas
 
