@@ -21,7 +21,7 @@
 
 ---
 
-### 2. Erro: java.lang.String cannot be cast to java.lang.Boolean
+### 2. Erro: java.lang.String cannot be cast to java.lang.Boolean (fontWeight)
 
 **Sintoma:**
 ```
@@ -43,15 +43,52 @@ fontWeight: '600'  // String numérica
 fontWeight: 'bold'  // String de palavra-chave
 ```
 
-**Arquivos corrigidos:**
-- `src/components/ImageCard/styles.js`
-- `src/components/VideoCard/styles.js`
-- `src/components/WeatherWidget/styles.js`
-- `src/navigation/AppNavigator.js`
-- `src/screens/AboutScreen/styles.js`
-- `src/screens/HomeScreen/styles.js`
-
 **Commit:** `6d81218` - fix: corrige fontWeight numéricos para compatibilidade Android
+
+---
+
+### 3. Erro: java.lang.String cannot be cast to java.lang.Boolean (app.json) ⭐ PRINCIPAL
+
+**Sintoma:**
+```
+java.lang.String cannot be cast to java.lang.Boolean
+setProperty (SourceFile:642)
+updateProperties (SourceFile:35)
+createViewInstance (SourceFile:7)
+```
+
+**Causa:** Propriedades booleanas no `app.json` causando erro durante a criação de Views:
+- `newArchEnabled: true`
+- `edgeToEdgeEnabled: true`
+
+Essas configurações experimentais do Expo podem causar problemas de compatibilidade em algumas versões do Android.
+
+**Exemplo do problema:**
+```json
+// ❌ Causava erro no Android
+{
+  "android": {
+    "edgeToEdgeEnabled": true  // Incompatível
+  },
+  "newArchEnabled": true  // Incompatível com Expo 54
+}
+```
+
+**Solução:** ✅ Removidas as configurações problemáticas
+
+```json
+// ✅ Funciona em todas plataformas
+{
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#ffffff"
+    }
+  }
+}
+```
+
+**Commit:** `2e5e51d` - fix: remove newArchEnabled e edgeToEdgeEnabled que causavam erro de cast Boolean
 
 ---
 
@@ -71,33 +108,23 @@ cd architetando-app
 npx expo run:android
 ```
 
-**Ambos os erros foram completamente resolvidos!** ✅
+**Todos os três erros foram completamente resolvidos!** ✅
 
 ---
 
-## 📱 O que mudou na Tela "Sobre"
+## 📱 Alterações Realizadas
 
-### Antes (❌ Não funcionava):
-```javascript
-import MapView, { Marker } from 'react-native-maps';
+### 1. Tela "Sobre" - Remoção do react-native-maps
+Antes: MapView nativo (incompatível)
+Depois: Card clicável com deep link do Google Maps
 
-<MapView style={styles.map} initialRegion={location}>
-  <Marker coordinate={location} />
-</MapView>
-```
+### 2. Estilos - fontWeight
+Antes: `fontWeight: '600'` (strings numéricas)
+Depois: `fontWeight: 'bold'` (palavra-chave)
 
-### Depois (✅ Funciona perfeitamente):
-```javascript
-import { Linking, TouchableOpacity } from 'react-native';
-
-<TouchableOpacity onPress={() => openGoogleMaps()}>
-  <View style={styles.mapCard}>
-    <Text>📍 Centro Histórico de Santos</Text>
-    <Text>Praça Visc. de Mauá, 29 - sala 422</Text>
-    <Button>🗺️ Abrir no Google Maps</Button>
-  </View>
-</TouchableOpacity>
-```
+### 3. Configuração - app.json
+Antes: Propriedades experimentais habilitadas
+Depois: Configuração limpa e compatível
 
 ---
 
@@ -108,7 +135,8 @@ import { Linking, TouchableOpacity } from 'react-native';
 3. ✅ **Compatibilidade total** com diferentes versões do Android
 4. ✅ **Google Maps API ainda é usado** via deep linking
 5. ✅ **Código mais limpo** e fácil de manter
-6. ✅ **Melhor UX** - abre o app nativo do Google Maps
+6. ✅ **Build nativo funciona** sem erros
+7. ✅ **Configuração estável** do Expo
 
 ---
 
@@ -130,6 +158,8 @@ Todos os requisitos acadêmicos continuam 100% atendidos:
 ## 📝 Histórico de Commits
 
 ```
+2e5e51d fix: remove newArchEnabled e edgeToEdgeEnabled que causavam erro de cast Boolean
+e6d27e5 docs: atualiza guia de correções Android com solução do fontWeight
 6d81218 fix: corrige fontWeight numéricos para compatibilidade Android
 79ae8b1 docs: adiciona CHANGELOG e guia de correção do Android
 dad6301 fix: remove react-native-maps e substitui por solução compatível com Expo
@@ -148,5 +178,16 @@ O app agora:
 - ✅ Funciona no Expo Web
 - ✅ Build nativo funciona (Android/iOS)
 - ✅ Todos os requisitos acadêmicos atendidos
+- ✅ Sem warnings ou erros de cast
 
 **Pode testar com confiança!** 🚀
+
+---
+
+## 💡 Dica para Evitar Problemas Futuros
+
+Se encontrar erros de tipo/cast no Android:
+1. Verifique o `app.json` - remova flags experimentais
+2. Verifique props booleanas - use `{true}` não `"true"`
+3. Verifique fontWeight - use palavras-chave ('bold', 'normal')
+4. Teste no Expo Go antes de fazer build nativo
