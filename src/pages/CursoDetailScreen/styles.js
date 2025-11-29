@@ -1,0 +1,170 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../../constants/colors';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scrollContent: {
+    flex: 1,
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  errorText: {
+    fontSize: 18,
+    color: colors.textLight,
+    textAlign: 'center',
+  },
+  cursoImage: {
+    width: '100%',
+    height: 250,
+  },
+  contentContainer: {
+    padding: 16,
+  },
+  categoriaContainer: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.primary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
+  categoria: {
+    color: colors.white,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.primary,
+    marginBottom: 20,
+    lineHeight: 32,
+  },
+  infoGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+    backgroundColor: colors.white,
+    borderRadius: 12,
+    padding: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  infoItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  infoIcon: {
+    fontSize: 24,
+    marginBottom: 8,
+  },
+  infoLabel: {
+    fontSize: 12,
+    color: colors.textLight,
+    marginBottom: 4,
+  },
+  infoValue: {
+    fontSize: 13,
+    color: colors.text,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  section: {
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.primary,
+    marginBottom: 12,
+  },
+  descricao: {
+    fontSize: 15,
+    color: colors.text,
+    lineHeight: 24,
+  },
+  listItem: {
+    flexDirection: 'row',
+    marginBottom: 12,
+    paddingLeft: 8,
+  },
+  bullet: {
+    fontSize: 16,
+    color: colors.primary,
+    marginRight: 12,
+    fontWeight: 'bold',
+  },
+  listText: {
+    flex: 1,
+    fontSize: 15,
+    color: colors.text,
+    lineHeight: 22,
+  },
+  moduloContainer: {
+    backgroundColor: colors.white,
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  moduloTitulo: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.primary,
+    marginBottom: 12,
+  },
+  topicoItem: {
+    flexDirection: 'row',
+    marginBottom: 8,
+    paddingLeft: 8,
+  },
+  topicoBullet: {
+    fontSize: 14,
+    color: colors.textLight,
+    marginRight: 8,
+  },
+  topicoText: {
+    flex: 1,
+    fontSize: 14,
+    color: colors.text,
+    lineHeight: 20,
+  },
+  inscricaoButton: {
+    backgroundColor: colors.primary,
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    marginTop: 12,
+    marginBottom: 12,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  inscricaoButtonText: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  precoInfo: {
+    fontSize: 16,
+    color: colors.textLight,
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+});

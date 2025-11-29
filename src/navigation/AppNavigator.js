@@ -1,21 +1,29 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { colors } from '../constants/colors';
 
-// Importar as telas
-import HomeScreen from '../screens/HomeScreen';
-import VideosScreen from '../screens/VideosScreen';
-import AboutScreen from '../screens/AboutScreen';
-import GalleryScreen from '../screens/GalleryScreen';
+import HomeScreen from '../pages/HomeScreen';
+import VideosScreen from '../pages/VideosScreen';
+import AboutScreen from '../pages/AboutScreen';
+import GalleryScreen from '../pages/GalleryScreen';
+import CursosScreen from '../pages/CursosScreen';
+import CursoDetailScreen from '../pages/CursoDetailScreen';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-/**
- * Navegação principal do aplicativo
- * Bottom Tabs com 4 telas: Home, Vídeos, Sobre e Galeria
- */
+const CursosStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="CursosList" component={CursosScreen} />
+      <Stack.Screen name="CursoDetail" component={CursoDetailScreen} />
+    </Stack.Navigator>
+  );
+};
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
@@ -28,12 +36,12 @@ const AppNavigator = () => {
             backgroundColor: colors.white,
             borderTopColor: colors.border,
             borderTopWidth: 1,
-            height: 60,
-            paddingBottom: 8,
+            height: Platform.OS === 'ios' ? 85 : 60,
+            paddingBottom: Platform.OS === 'ios' ? 20 : 8,
             paddingTop: 8,
           },
           tabBarLabelStyle: {
-            fontSize: 12,
+            fontSize: 11,
             fontWeight: 'bold',
           },
         }}
@@ -43,9 +51,15 @@ const AppNavigator = () => {
           component={HomeScreen}
           options={{
             tabBarLabel: 'Início',
-            tabBarIcon: ({ color }) => (
-              <TabIcon icon="🏠" color={color} />
-            ),
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>🏠</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Cursos"
+          component={CursosStack}
+          options={{
+            tabBarLabel: 'Cursos',
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>📚</Text>,
           }}
         />
         <Tab.Screen
@@ -53,19 +67,7 @@ const AppNavigator = () => {
           component={VideosScreen}
           options={{
             tabBarLabel: 'Vídeos',
-            tabBarIcon: ({ color }) => (
-              <TabIcon icon="▶️" color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="About"
-          component={AboutScreen}
-          options={{
-            tabBarLabel: 'Sobre',
-            tabBarIcon: ({ color }) => (
-              <TabIcon icon="ℹ️" color={color} />
-            ),
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>▶️</Text>,
           }}
         />
         <Tab.Screen
@@ -73,19 +75,20 @@ const AppNavigator = () => {
           component={GalleryScreen}
           options={{
             tabBarLabel: 'Galeria',
-            tabBarIcon: ({ color }) => (
-              <TabIcon icon="🖼️" color={color} />
-            ),
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>🖼️</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="About"
+          component={AboutScreen}
+          options={{
+            tabBarLabel: 'Sobre',
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>ℹ️</Text>,
           }}
         />
       </Tab.Navigator>
     </NavigationContainer>
   );
-};
-
-// Componente auxiliar para ícones de emoji
-const TabIcon = ({ icon, color }) => {
-  return <Text style={{ fontSize: 24 }}>{icon}</Text>;
 };
 
 export default AppNavigator;

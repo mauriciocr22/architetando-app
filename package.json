@@ -11,15 +11,21 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-navigation/bottom-tabs": "^7.8.7",
+    "@react-navigation/drawer": "^7.7.5",
     "@react-navigation/native": "^7.1.22",
     "@react-navigation/stack": "^7.6.8",
     "axios": "^1.13.2",
     "expo": "~54.0.25",
+    "expo-asset": "^12.0.10",
+    "expo-file-system": "^19.0.19",
     "expo-linking": "^8.0.9",
+    "expo-sharing": "^14.0.7",
     "expo-status-bar": "~3.0.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-reanimated": "~3.10.1",
     "react-native-safe-area-context": "^5.6.2",
     "react-native-screens": "~4.16.0",
     "react-native-svg": "15.12.1",
@@ -27,6 +33,7 @@
   },
   "private": true,
   "devDependencies": {
-    "babel-preset-expo": "^54.0.7"
+    "babel-preset-expo": "^54.0.7",
+    "react-native-svg-transformer": "^1.5.2"
   }
 }

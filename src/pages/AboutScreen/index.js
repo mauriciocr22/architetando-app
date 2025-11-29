@@ -1,15 +1,9 @@
 import React from 'react';
-import { View, Text, ScrollView, Linking, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Linking, TouchableOpacity, SafeAreaView } from 'react-native';
 import Header from '../../components/Header';
 import { styles } from './styles';
 
-/**
- * Tela Sobre
- * Informações sobre a Architetando
- * API: Google Maps - mostra localização da empresa
- */
 const AboutScreen = () => {
-  // Coordenadas da Praça Visc. de Mauá, 29 - Centro, Santos/SP
   const location = {
     latitude: -23.9395,
     longitude: -46.3322,
@@ -17,19 +11,17 @@ const AboutScreen = () => {
 
   const address = 'Praça Visc. de Mauá, 29 - sala 422 - Centro, Santos - SP, 11010-000';
 
-  // Abre endereço no Google Maps
   const openInMaps = () => {
     const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
     Linking.openURL(url);
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header title="Sobre Nós" />
-      <ScrollView style={styles.scrollContent}>
+      <ScrollView style={styles.scrollContent} contentContainerStyle={{paddingBottom: 80}}>
         <Text style={styles.title}>Architetando Cursos de Arquitetura</Text>
 
-        {/* Sobre a Empresa */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Quem Somos</Text>
           <View style={styles.card}>
@@ -50,7 +42,6 @@ const AboutScreen = () => {
           </View>
         </View>
 
-        {/* Localização */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Nossa Localização</Text>
           <View style={styles.card}>
@@ -60,7 +51,6 @@ const AboutScreen = () => {
             </Text>
           </View>
 
-          {/* Mapa - Google Maps (Deep Link) */}
           <TouchableOpacity
             style={styles.mapContainer}
             onPress={openInMaps}
@@ -84,7 +74,6 @@ const AboutScreen = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Contato */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Contato</Text>
           <View style={styles.card}>
@@ -121,7 +110,6 @@ const AboutScreen = () => {
           </View>
         </View>
 
-        {/* Parceria */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Parcerias</Text>
           <View style={styles.card}>
@@ -132,7 +120,7 @@ const AboutScreen = () => {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

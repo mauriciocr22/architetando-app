@@ -2,12 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
-/**
- * Componente ImageCard
- * Exibe uma imagem da galeria com opção de favoritar
- */
 const ImageCard = ({ image, isFavorite, onToggleFavorite }) => {
-  // Determina se é imagem local ou remota
   const imageSource = image.type === 'local'
     ? image.source
     : { uri: image.thumbnail || image.url };
@@ -20,13 +15,14 @@ const ImageCard = ({ image, isFavorite, onToggleFavorite }) => {
           style={styles.image}
           resizeMode="cover"
         />
+
         <TouchableOpacity
           style={styles.favoriteButton}
           onPress={() => onToggleFavorite(image.id)}
           activeOpacity={0.7}
         >
           <Text style={styles.favoriteIcon}>
-            {isFavorite ? '★' : '☆'}
+            {isFavorite ? '⭐' : '☆'}
           </Text>
         </TouchableOpacity>
       </View>

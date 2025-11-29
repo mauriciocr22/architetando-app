@@ -4,10 +4,6 @@ import { getWeatherSantos } from '../../services/weatherApi';
 import { colors } from '../../constants/colors';
 import { styles } from './styles';
 
-/**
- * Componente WeatherWidget
- * Exibe informações do clima de Santos/SP usando OpenWeatherMap API
- */
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -2,17 +2,11 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import { styles } from './styles';
 
-/**
- * Componente VideoCard
- * Exibe informações de um vídeo do YouTube com opção de favoritar
- */
 const VideoCard = ({ video, isFavorite, onToggleFavorite }) => {
-  // Abre o vídeo no YouTube
   const handleOpenVideo = () => {
     Linking.openURL(video.url);
   };
 
-  // Trunca a descrição se for muito longa
   const truncateDescription = (text, maxLength = 120) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + '...';
@@ -40,7 +34,7 @@ const VideoCard = ({ video, isFavorite, onToggleFavorite }) => {
           activeOpacity={0.7}
         >
           <Text style={styles.favoriteIcon}>
-            {isFavorite ? '★' : '☆'}
+            {isFavorite ? '⭐' : '☆'}
           </Text>
         </TouchableOpacity>
       </TouchableOpacity>

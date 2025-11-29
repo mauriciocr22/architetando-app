@@ -84,7 +84,7 @@ const API_KEY = 'SUA_YOUTUBE_API_KEY_AQUI';
 **Para Web (Expo Web):**
 - No mesmo projeto do Google Cloud Console
 - Ative a "Maps Embed API"
-- Edite o arquivo `src/screens/AboutScreen/index.js` (linha do iframe):
+- Edite o arquivo `src/pages/AboutScreen/index.js` (linha do iframe):
 
 ```javascript
 src={`https://www.google.com/maps/embed/v1/place?key=SUA_GOOGLE_MAPS_KEY&q=...`}
@@ -156,7 +156,7 @@ architetando-app/
 │   │   ├── VideoCard/
 │   │   ├── ImageCard/
 │   │   └── WeatherWidget/
-│   ├── screens/             # Telas do aplicativo
+│   ├── pages/               # Telas do aplicativo
 │   │   ├── HomeScreen/
 │   │   ├── VideosScreen/
 │   │   ├── AboutScreen/

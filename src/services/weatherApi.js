@@ -1,25 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
-// OpenWeatherMap API configuration
-const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'; // Substituir pela sua chave
-const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = "fd229991c4ab9b526eedf5a4ec9ba9ab";
+const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
-/**
- * Busca informações de clima para Santos, SP
- * @returns {Promise} Dados do clima atual
- */
 export const getWeatherSantos = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/weather`, {
       params: {
-        q: 'Santos,BR',
+        q: "Santos,BR",
         appid: API_KEY,
-        units: 'metric', // Celsius
-        lang: 'pt_br',
+        units: "metric",
+        lang: "pt_br",
       },
     });
 
-    // Formata os dados retornados
     const { data } = response;
     return {
       temperature: Math.round(data.main.temp),
@@ -31,17 +25,16 @@ export const getWeatherSantos = async () => {
       iconUrl: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     };
   } catch (error) {
-    console.error('Erro ao buscar clima:', error);
-    // Retorna dados mock em caso de erro
+    console.error("Erro ao buscar clima:", error);
     return {
       temperature: 25,
-      description: 'Parcialmente nublado',
-      icon: '02d',
+      description: "Parcialmente nublado",
+      icon: "02d",
       humidity: 70,
       feelsLike: 26,
-      city: 'Santos',
-      iconUrl: 'https://openweathermap.org/img/wn/02d@2x.png',
-      error: 'Não foi possível carregar dados reais. Configure sua API key.',
+      city: "Santos",
+      iconUrl: "https://openweathermap.org/img/wn/02d@2x.png",
+      error: "Não foi possível carregar dados reais. Configure sua API key.",
     };
   }
 };
